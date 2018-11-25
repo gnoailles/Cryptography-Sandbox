@@ -26,12 +26,12 @@ namespace Cryptography
 
             uint32_t m_h[8] {0};
 
+            void CompressBlock(SHA256_Block& p_block);
         public:
             SHA256();
             ~SHA256() = default;
 
             std::array<uint8_t,OUTPUT_SIZE> Hash(const unsigned char* p_message, const uint64_t& p_size);
-            void CompressBlock(SHA256_Block& p_block);
         };
     }
 }

@@ -12,7 +12,7 @@ namespace Cryptography
             uint8_t key[SHA256::BLOCK_SIZE] = {0};
 
             if(p_keyLength > SHA256::BLOCK_SIZE)
-                memcpy(key, SHA256().Hash(p_key, p_keyLength).data(), SHA256::OUTPUT_SIZE);
+                memcpy(key, &(SHA256().Hash(p_key, p_keyLength)[0]), SHA256::OUTPUT_SIZE);
             else
                 memcpy(key, p_key, p_keyLength);
 

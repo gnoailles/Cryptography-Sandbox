@@ -5,6 +5,7 @@
 #include <corecrt_memcpy_s.h>
 #include <random>
 #include <cassert>
+#include <sstream>
 
 template<unsigned int BitCount>
 class BigUInt
@@ -165,6 +166,23 @@ public:
                 os << '\n';
         }
         return os;
+    }
+
+    std::string ToString() const
+    {
+        std::ostringstream ss;
+        for (int i = 0; i < ULL_COUNT; ++i)
+        {
+            ss << std::hex << std::uppercase << number[i] << " ";
+            if((i + 1) % 6 == 0)
+                ss << '\n';
+        }
+        return ss.str();
+    }
+
+    uint64_t* Get64BitArray()
+    {
+        return number;
     }
 #pragma endregion
 };

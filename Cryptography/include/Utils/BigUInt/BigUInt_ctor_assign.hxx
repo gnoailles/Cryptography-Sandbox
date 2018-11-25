@@ -1,4 +1,5 @@
 #pragma once
+#include <ctime>
 
 template <unsigned BitCount>
 BigUInt<BitCount>::BigUInt(const uint64_t value)
@@ -90,7 +91,8 @@ BigUInt<BitCount>& BigUInt<BitCount>::operator=(const BigUInt<BitCount>& other)
 template <unsigned BitCount>
 BigUInt<BitCount> BigUInt<BitCount>::Random()
 {
-    static std::mt19937 randEngine;
+    static std::random_device rd;;
+    static std::mt19937 randEngine(rd());
     static std::uniform_int_distribution<uint64_t> uintDist;
 
     BigUInt<BitCount> res;
