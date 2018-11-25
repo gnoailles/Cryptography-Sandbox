@@ -1,12 +1,23 @@
 #include <iostream>
 
-#include "DiffieHellman.h"
-#include "BigUInt/BigUInt.h"
+#include "KeyExchange/DiffieHellman.h"
+#include "Utils/BigUInt/BigUInt.h"
 
+using namespace Cryptography;
+
+void DiffieHellmanExample();
 
 int main()
 {
 
+    DiffieHellmanExample();
+
+    std::cin.get();
+}
+
+void DiffieHellmanExample()
+{
+    using namespace KeyExchange;
     BigUInt<PRIVATE_KEY_SIZE>   private1;
     BigUInt<PUBLIC_KEY_SIZE>    public1;
 
@@ -29,6 +40,4 @@ int main()
     std::cout << "Client1 Shared  Key: \n" << shared1 << "\n\n";
     const auto shared2 = DiffieHellman::GenerateSharedKey(public1, private2);
     std::cout << "Client2 Shared  Key: \n" << shared2 << "\n\n";
-
-    std::cin.get();
 }

@@ -15,33 +15,51 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="include\BigUInt\BigUInt.h">
+    <ClInclude Include="include\Encryption\AES.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\BigUInt\BigUInt_arithmetic.hxx">
+    <ClInclude Include="include\Hash\HMAC.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\BigUInt\BigUInt_bitwise.hxx">
+    <ClInclude Include="include\Hash\SHA256.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\BigUInt\BigUInt_comp.hxx">
+    <ClInclude Include="include\KeyExchange\DiffieHellman.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\BigUInt\BigUInt_ctor_assign.hxx">
+    <ClInclude Include="include\Utils\BigUInt\BigUInt.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\BigUInt\BigUint_mod_arithmetic.hxx">
+    <ClInclude Include="include\Utils\BigUInt\BigUInt_arithmetic.hxx">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\DiffieHellman.h">
+    <ClInclude Include="include\Utils\BigUInt\BigUInt_bitwise.hxx">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Utils\BigUInt\BigUInt_comp.hxx">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Utils\BigUInt\BigUInt_ctor_assign.hxx">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Utils\BigUInt\BigUint_mod_arithmetic.hxx">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\DiffieHellman.cpp">
+    <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="main.cpp">
+    <ClCompile Include="src\Encryption\AES.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Hash\HMAC.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Hash\SHA256.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\KeyExchange\DiffieHellman.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
