@@ -1,4 +1,6 @@
-# Diffie-Hellman
+# Cryptography Sandbox
+
+## Diffie-Hellman
 Diffie-Hellman-Merkle key exchange implementation using [Arbitrary Precision Integer](https://github.com/gnoailles/ArbitraryPrecision) library.
 
 Prime of size 1024, 1536 and 2048 are presets based on [RFC2409](https://tools.ietf.org/html/rfc2409#section-6.2) and [RFC3526](https://tools.ietf.org/html/rfc3526#section-2)
