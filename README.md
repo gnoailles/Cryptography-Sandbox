@@ -13,7 +13,7 @@ The currently implemented algorithms are :
 
 
 ## Diffie-Hellman
-Diffie-Hellman-Merkle key exchange implementation using [Arbitrary Precision Integer](https://github.com/gnoailles/ArbitraryPrecision) library.
+Diffie-Hellman-Merkle key exchange implementation using [Multi Precision Integer](https://github.com/gnoailles/MultiPrecision) library.
 
 Prime of size 1024, 1536 and 2048 are presets based on [RFC2409](https://tools.ietf.org/html/rfc2409#section-6.2) and [RFC3526](https://tools.ietf.org/html/rfc3526#section-2)
 
@@ -24,11 +24,11 @@ Prime of size 1024, 1536 and 2048 are presets based on [RFC2409](https://tools.i
 `PRIVATE_KEY_SIZE` is set to 256
 
 ```c++
-    BigUInt<PRIVATE_KEY_SIZE>   private1;
-    BigUInt<PUBLIC_KEY_SIZE>    public1;
+    NGMP<PRIVATE_KEY_SIZE>   private1;
+    NGMP<PUBLIC_KEY_SIZE>    public1;
 
-    BigUInt<PRIVATE_KEY_SIZE>   private2;
-    BigUInt<PUBLIC_KEY_SIZE>    public2;
+    NGMP<PRIVATE_KEY_SIZE>   private2;
+    NGMP<PUBLIC_KEY_SIZE>    public2;
 
     DiffieHellman::GenerateKeyPair(private1, public1);
     std::cout << "Client1 Private Key: \n" << private1 << "\n\n";
