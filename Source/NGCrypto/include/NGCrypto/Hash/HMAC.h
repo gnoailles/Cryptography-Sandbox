@@ -1,11 +1,12 @@
 #pragma once
 #include <array>
+#include "NGCrypto/export.h"
 
 namespace Cryptography
 {
     namespace Hash
     {
-        class HMAC
+        class NG_CRYPTO_API HMAC
         {
         public:
             HMAC() = delete;

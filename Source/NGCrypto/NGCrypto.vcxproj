@@ -23,29 +23,30 @@
     <ProjectGuid>{6E488EE5-59C7-4850-A403-6B762AD61D42}</ProjectGuid>
     <RootNamespace>DiffieHellman</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
+    <ProjectName>NGCrypto</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v141</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v141</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v141</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v141</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
@@ -71,23 +72,23 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <IncludePath>$(ProjectDir);$(ProjectDir)include;$(IncludePath)</IncludePath>
-    <OutDir>$(SolutionDir)bin\$(PlatformTarget)-$(Configuration)\</OutDir>
-    <IntDir>$(SolutionDir)bin-int\$(PlatformTarget)-$(Configuration)\</IntDir>
+    <OutDir>$(SolutionDir)bin\$(ProjectName)\$(PlatformTarget)-$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)bin-int\$(ProjectName)\$(PlatformTarget)-$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <IncludePath>$(ProjectDir);$(ProjectDir)include;$(IncludePath)</IncludePath>
-    <OutDir>$(SolutionDir)bin\$(PlatformTarget)-$(Configuration)\</OutDir>
-    <IntDir>$(SolutionDir)bin-int\$(PlatformTarget)-$(Configuration)\</IntDir>
+    <OutDir>$(SolutionDir)bin\$(ProjectName)\$(PlatformTarget)-$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)bin-int\$(ProjectName)\$(PlatformTarget)-$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <IncludePath>$(ProjectDir);$(ProjectDir)include;$(IncludePath)</IncludePath>
-    <OutDir>$(SolutionDir)bin\$(PlatformTarget)-$(Configuration)\</OutDir>
-    <IntDir>$(SolutionDir)bin-int\$(PlatformTarget)-$(Configuration)\</IntDir>
+    <OutDir>$(SolutionDir)bin\$(ProjectName)\$(PlatformTarget)-$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)bin-int\$(ProjectName)\$(PlatformTarget)-$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <IncludePath>$(ProjectDir);$(ProjectDir)include;$(IncludePath)</IncludePath>
-    <OutDir>$(SolutionDir)bin\$(PlatformTarget)-$(Configuration)\</OutDir>
-    <IntDir>$(SolutionDir)bin-int\$(PlatformTarget)-$(Configuration)\</IntDir>
+    <OutDir>$(SolutionDir)bin\$(ProjectName)\$(PlatformTarget)-$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)bin-int\$(ProjectName)\$(PlatformTarget)-$(Configuration)\</IntDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -96,7 +97,20 @@
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
+      <PreprocessorDefinitions>NG_CRYPTO_EXPORT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
+    <PostBuildEvent>
+      <Command>:: Copy DLL Lib ::
+xcopy /y $(OutDir)*.dll $(SolutionDir)..\Build\bin\$(Platform)\$(Configuration)\
+xcopy /y $(OutDir)*.lib $(SolutionDir)..\Build\lib\$(Platform)\$(Configuration)\
+
+:: Clean Include Folder ::
+rd /S /Q $(SolutionDir)..\Build\include
+
+:: Copy Includes ::
+xcopy /y/s $(ProjectDir)include\*.h $(SolutionDir)..\Build\include\
+xcopy /y/s $(ProjectDir)include\*.hxx $(SolutionDir)..\Build\include\</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -105,7 +119,20 @@
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
+      <PreprocessorDefinitions>NG_CRYPTO_EXPORT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
+    <PostBuildEvent>
+      <Command>:: Copy DLL Lib ::
+xcopy /y $(OutDir)*.dll $(SolutionDir)..\Build\bin\$(Platform)\$(Configuration)\
+xcopy /y $(OutDir)*.lib $(SolutionDir)..\Build\lib\$(Platform)\$(Configuration)\
+
+:: Clean Include Folder ::
+rd /S /Q $(SolutionDir)..\Build\include
+
+:: Copy Includes ::
+xcopy /y/s $(ProjectDir)include\*.h $(SolutionDir)..\Build\include\
+xcopy /y/s $(ProjectDir)include\*.hxx $(SolutionDir)..\Build\include\</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -116,11 +143,24 @@
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
+      <PreprocessorDefinitions>NG_CRYPTO_EXPORT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
+    <PostBuildEvent>
+      <Command>:: Copy DLL Lib ::
+xcopy /y $(OutDir)*.dll $(SolutionDir)..\Build\bin\$(Platform)\$(Configuration)\
+xcopy /y $(OutDir)*.lib $(SolutionDir)..\Build\lib\$(Platform)\$(Configuration)\
+
+:: Clean Include Folder ::
+rd /S /Q $(SolutionDir)..\Build\include
+
+:: Copy Includes ::
+xcopy /y/s $(ProjectDir)include\*.h $(SolutionDir)..\Build\include\
+xcopy /y/s $(ProjectDir)include\*.hxx $(SolutionDir)..\Build\include\</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -131,26 +171,40 @@
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
+      <PreprocessorDefinitions>NG_CRYPTO_EXPORT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
+    <PostBuildEvent>
+      <Command>:: Copy DLL Lib ::
+xcopy /y $(OutDir)*.dll $(SolutionDir)..\Build\bin\$(Platform)\$(Configuration)\
+xcopy /y $(OutDir)*.lib $(SolutionDir)..\Build\lib\$(Platform)\$(Configuration)\
+
+:: Clean Include Folder ::
+rd /S /Q $(SolutionDir)..\Build\include
+
+:: Copy Includes ::
+xcopy /y/s $(ProjectDir)include\*.h $(SolutionDir)..\Build\include\
+xcopy /y/s $(ProjectDir)include\*.hxx $(SolutionDir)..\Build\include\</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="include\NGCrypto.h" />
+    <ClInclude Include="include\NGCrypto\export.h" />
     <ClInclude Include="include\Utils\BigUInt\BigUInt.h" />
     <ClInclude Include="include\Utils\BigUInt\BigUInt_arithmetic.hxx" />
     <ClInclude Include="include\Utils\BigUInt\BigUInt_bitwise.hxx" />
     <ClInclude Include="include\Utils\BigUInt\BigUInt_comp.hxx" />
     <ClInclude Include="include\Utils\BigUInt\BigUInt_ctor_assign.hxx" />
     <ClInclude Include="include\Utils\BigUInt\BigUint_mod_arithmetic.hxx" />
-    <ClInclude Include="include\Encryption\AES.h" />
-    <ClInclude Include="include\Hash\HMAC.h" />
-    <ClInclude Include="include\Hash\SHA256.h" />
-    <ClInclude Include="include\KeyExchange\DiffieHellman.h" />
+    <ClInclude Include="include\NGCrypto\Encryption\AES.h" />
+    <ClInclude Include="include\NGCrypto\Hash\HMAC.h" />
+    <ClInclude Include="include\NGCrypto\Hash\SHA256.h" />
+    <ClInclude Include="include\NGCrypto\KeyExchange\DiffieHellman.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp" />
     <ClCompile Include="src\Encryption\AES.cpp" />
     <ClCompile Include="src\Hash\HMAC.cpp" />
     <ClCompile Include="src\Hash\SHA256.cpp" />

@@ -2,12 +2,13 @@
 
 #include <wmmintrin.h>
 #include <cstdint>
+#include "NGCrypto/export.h"
 
 namespace Cryptography
 {
     namespace Encryption
     {
-        class AES
+        class NG_CRYPTO_API AES
         {
         private:
             inline static const unsigned char sbox[256] = {

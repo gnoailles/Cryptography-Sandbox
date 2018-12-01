@@ -1,11 +1,7 @@
 #include <iostream>
 #include <iomanip>
 
-#include "Utils/BigUInt/BigUInt.h"
-#include "KeyExchange/DiffieHellman.h"
-#include "Hash/SHA256.h"
-#include "Hash/HMAC.h"
-#include "Encryption/AES.h"
+#include "NGCrypto.h"
 
 using namespace Cryptography;
 
@@ -579,7 +575,7 @@ void CombinedUsageExample()
     std::cout << "\nCompute HMAC for the message\n";
     auto hmac = Hash::HMAC::HMAC_SHA256(hashedSecret1.data(), Hash::SHA256::OUTPUT_SIZE, client1data, messageLength);
     std::cout << "\nHMAC:\n";
-    PrintByteArray(hmac.data(), hmac.size());
+    PrintByteArray(hmac.data(), static_cast<uint32_t>(hmac.size()));
 
     std::cout << "\nAppend HMAC\n";
 
@@ -589,7 +585,7 @@ void CombinedUsageExample()
     memcpy(&completeMessage[0] + messageLength, hmac.data(), hmac.size());
 
     std::cout << "\nComplete message :\n";
-    PrintByteArray(completeMessage.data(), completeMessage.size());
+    PrintByteArray(completeMessage.data(), static_cast<uint32_t>(completeMessage.size()));
     
     std::cout << "\nSend complete message to client2\n";
 
@@ -601,15 +597,15 @@ void CombinedUsageExample()
     memcpy(&receivedHMAC[0], completeMessage.data() + client2Message.size(), Hash::SHA256::OUTPUT_SIZE);
 
     std::cout << "\nClient2 received message\n";
-    PrintByteArray(&client2Message[0], client2Message.size());
+    PrintByteArray(&client2Message[0], static_cast<uint32_t>(client2Message.size()));
     
     std::cout << "\nClient2 received HMAC\n";
-    PrintByteArray(&receivedHMAC[0], receivedHMAC.size());
+    PrintByteArray(&receivedHMAC[0], static_cast<uint32_t>(receivedHMAC.size()));
 
     std::cout << "\nClient2 checks HMAC\n";
     auto client2HMAC = Hash::HMAC::HMAC_SHA256(hashedSecret2.data(), Hash::SHA256::OUTPUT_SIZE, &client2Message[0], client2Message.size());
     std::cout << "\nClient 2 computed HMAC:\n";
-    PrintByteArray(client2HMAC.data(), client2HMAC.size());
+    PrintByteArray(client2HMAC.data(), static_cast<uint32_t>(client2HMAC.size()));
 
     if(memcmp(client2HMAC.data(), receivedHMAC.data(), Hash::SHA256::OUTPUT_SIZE) != 0)
     {

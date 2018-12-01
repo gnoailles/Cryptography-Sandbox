@@ -1,4 +1,4 @@
-#include "Hash/SHA256.h"
+#include "NGCrypto/Hash/SHA256.h"
 #include <vector>
 
 #pragma intrinsic(_byteswap_ulong)
@@ -45,10 +45,10 @@ namespace Cryptography
             {
                 if(bytesLeft >= 0)
                 {
-                    memcpy(blocks[i].words, p_message, (bytesLeft < BLOCK_SIZE) ? bytesLeft : BLOCK_SIZE);
+                    memcpy(blocks[i].words, p_message, (bytesLeft < BLOCK_SIZE) ? static_cast<size_t>(bytesLeft) : BLOCK_SIZE);
                     if (bytesLeft < BLOCK_SIZE)
                     {
-                        memset(reinterpret_cast<unsigned char*>(blocks[i].words) + bytesLeft, 0,BLOCK_SIZE - bytesLeft);
+                        memset(reinterpret_cast<unsigned char*>(blocks[i].words) + bytesLeft, 0, static_cast<size_t>(BLOCK_SIZE - bytesLeft));
                         *(reinterpret_cast<unsigned char*>(blocks[i].words) + bytesLeft) = 0x80;
                         bytesLeft = 0;
                     }

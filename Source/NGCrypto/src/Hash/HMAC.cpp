@@ -1,5 +1,5 @@
-#include "Hash/HMAC.h"
-#include "Hash/SHA256.h"
+#include "NGCrypto/Hash/HMAC.h"
+#include "NGCrypto/Hash/SHA256.h"
 #include <vector>
 
 namespace Cryptography
@@ -14,7 +14,7 @@ namespace Cryptography
             if(p_keyLength > SHA256::BLOCK_SIZE)
                 memcpy(key, &(SHA256().Hash(p_key, p_keyLength)[0]), SHA256::OUTPUT_SIZE);
             else
-                memcpy(key, p_key, p_keyLength);
+                memcpy(key, p_key, static_cast<size_t>(p_keyLength));
 
             uint8_t iPadKey [SHA256::BLOCK_SIZE];
             uint8_t oPadKey [SHA256::BLOCK_SIZE];
@@ -59,9 +59,9 @@ namespace Cryptography
             }
 
             std::vector<uint8_t>sha;
-            sha.resize(p_messageLength + SHA256::BLOCK_SIZE, 0);
+            sha.resize(static_cast<size_t>(p_messageLength + SHA256::BLOCK_SIZE), 0);
             memcpy(&sha[0],                  iPadKey, SHA256::BLOCK_SIZE);
-            memcpy(&sha[SHA256::BLOCK_SIZE], p_message, p_messageLength);
+            memcpy(&sha[SHA256::BLOCK_SIZE], p_message, static_cast<size_t>(p_messageLength));
 
             auto shaIPad = SHA256().Hash(&sha[0], SHA256::BLOCK_SIZE + p_messageLength);
             uint8_t hmac[96];

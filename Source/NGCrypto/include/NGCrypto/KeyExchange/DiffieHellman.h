@@ -1,5 +1,9 @@
 #pragma once
 #include "Utils/BigUInt/BigUInt.h"
+#include "NGCrypto/export.h"
+
+#pragma warning(push)
+#pragma warning(disable: 4251)
 
 #define PUBLIC_KEY_SIZE 2048
 #define PRIVATE_KEY_SIZE 256
@@ -7,7 +11,7 @@ namespace Cryptography
 {
     namespace KeyExchange
     {
-        class DiffieHellman
+        class NG_CRYPTO_API DiffieHellman
         {
         private:
 
@@ -39,3 +43,5 @@ namespace Cryptography
         };
     }
 }
+
+#pragma warning(pop)

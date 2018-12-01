@@ -1,4 +1,4 @@
-#include "KeyExchange/DiffieHellman.h"
+#include "NGCrypto/KeyExchange/DiffieHellman.h"
 
 namespace Cryptography
 {

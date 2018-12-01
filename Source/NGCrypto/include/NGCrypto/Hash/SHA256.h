@@ -1,12 +1,14 @@
 #pragma once
 #include <cstdint>
 #include <array>
+#include "NGCrypto/export.h"
+
 
 namespace Cryptography
 {
     namespace Hash
     {
-        class SHA256
+        class NG_CRYPTO_API SHA256
         {
             using WORD = uint32_t;
 

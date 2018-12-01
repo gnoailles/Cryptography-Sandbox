@@ -15,18 +15,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="include\Encryption\AES.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\Hash\HMAC.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\Hash\SHA256.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\KeyExchange\DiffieHellman.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="include\Utils\BigUInt\BigUInt.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -45,11 +33,26 @@
     <ClInclude Include="include\Utils\BigUInt\BigUint_mod_arithmetic.hxx">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="include\NGCrypto\Hash\HMAC.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NGCrypto\Hash\SHA256.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NGCrypto\Encryption\AES.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NGCrypto\KeyExchange\DiffieHellman.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NGCrypto.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NGCrypto\export.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\Encryption\AES.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
