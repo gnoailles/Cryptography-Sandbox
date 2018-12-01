@@ -23,7 +23,7 @@ namespace Cryptography
             0x3995497C, 0xEA956AE5, 0x15D22618, 0x98FA0510,
             0x15728E5A, 0x8AACAA68, 0xFFFFFFFF, 0xFFFFFFFF};
 
-        const BigUInt<2048> DiffieHellman::PRIME(PRIME_ARRAY, 64);
+        const NGMP<2048> DiffieHellman::PRIME(PRIME_ARRAY, 64);
     #elif  PUBLIC_KEY_SIZE == 1536
         const uint32_t DiffieHellman::PRIME_ARRAY[48] = {
             0xFFFFFFFF, 0xFFFFFFFF, 0xC90FDAA2, 0x2168C234, 0xC4C6628B, 0x80DC1CD1,
@@ -34,7 +34,7 @@ namespace Cryptography
             0xC2007CB8, 0xA163BF05, 0x98DA4836, 0x1C55D39A, 0x69163FA8, 0xFD24CF5F,
             0x83655D23, 0xDCA3AD96, 0x1C62F356, 0x208552BB, 0x9ED52907, 0x7096966D,
             0x670C354E, 0x4ABC9804, 0xF1746C08, 0xCA237327, 0xFFFFFFFF, 0xFFFFFFFF};
-        const BigUInt<1536> DiffieHellman::PRIME(PRIME_ARRAY, 48);
+        const NGMP<1536> DiffieHellman::PRIME(PRIME_ARRAY, 48);
     #elif  PUBLIC_KEY_SIZE == 1024
         const uint32_t DiffieHellman::PRIME_ARRAY[32] = {
             0xFFFFFFFF, 0xFFFFFFFF, 0xC90FDAA2, 0x2168C234,
@@ -45,21 +45,21 @@ namespace Cryptography
             0xF44C42E9, 0xA637ED6B, 0x0BFF5CB6, 0xF406B7ED,
             0xEE386BFB, 0x5A899FA5, 0xAE9F2411, 0x7C4B1FE6,
             0x49286651, 0xECE65381, 0xFFFFFFFF, 0xFFFFFFFF};
-        const BigUInt<1024> DiffieHellman::PRIME(PRIME_ARRAY, 32);
+        const NGMP<1024> DiffieHellman::PRIME(PRIME_ARRAY, 32);
     #endif
 
-        void DiffieHellman::GenerateKeyPair(BigUInt<PRIVATE_KEY_SIZE>& p_privateKey, BigUInt<PUBLIC_KEY_SIZE>& p_publicKey)
+        void DiffieHellman::GenerateKeyPair(NGMP<PRIVATE_KEY_SIZE>& p_privateKey, NGMP<PUBLIC_KEY_SIZE>& p_publicKey)
         {
-            p_privateKey = BigUInt<PRIVATE_KEY_SIZE>::Random();
+            p_privateKey = NGMP<PRIVATE_KEY_SIZE>::Random();
 
             // Public Key = GENERATOR ^ PrivateKey mod PRIME
-            p_publicKey = BigUInt<OVERFLOW_SAFE_SIZE>::PowMod(GENERATOR, p_privateKey, PRIME);
+            p_publicKey = NGMP<OVERFLOW_SAFE_SIZE>::PowMod(GENERATOR, p_privateKey, PRIME);
         }
 
-        BigUInt<PUBLIC_KEY_SIZE> DiffieHellman::GenerateSharedKey(const BigUInt<PUBLIC_KEY_SIZE>& p_otherPublic, const BigUInt<PRIVATE_KEY_SIZE>& p_privateKey)
+        NGMP<PUBLIC_KEY_SIZE> DiffieHellman::GenerateSharedKey(const NGMP<PUBLIC_KEY_SIZE>& p_otherPublic, const NGMP<PRIVATE_KEY_SIZE>& p_privateKey)
         {
             // Shared Key = PublicKey ^ PrivateKey mod PRIME
-            return BigUInt<OVERFLOW_SAFE_SIZE>::PowMod(p_otherPublic, p_privateKey, PRIME);
+            return NGMP<OVERFLOW_SAFE_SIZE>::PowMod(p_otherPublic, p_privateKey, PRIME);
         }
     }
 }

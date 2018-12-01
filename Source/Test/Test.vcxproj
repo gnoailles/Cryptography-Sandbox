@@ -70,22 +70,22 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>$(SolutionDir)NGCrypto;$(SolutionDir)NGCrypto/include;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)NGCrypto;$(SolutionDir)NGCrypto/include;$(SolutionDir)Dependencies\NGMP\include;$(IncludePath)</IncludePath>
     <OutDir>$(SolutionDir)bin\$(ProjectName)\$(PlatformTarget)-$(Configuration)\</OutDir>
     <IntDir>$(SolutionDir)bin-int\$(ProjectName)\$(PlatformTarget)-$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <IncludePath>$(SolutionDir)NGCrypto;$(SolutionDir)NGCrypto/include;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)NGCrypto;$(SolutionDir)NGCrypto/include;$(SolutionDir)Dependencies\NGMP\include;$(IncludePath)</IncludePath>
     <OutDir>$(SolutionDir)bin\$(ProjectName)\$(PlatformTarget)-$(Configuration)\</OutDir>
     <IntDir>$(SolutionDir)bin-int\$(ProjectName)\$(PlatformTarget)-$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>$(SolutionDir)NGCrypto;$(SolutionDir)NGCrypto/include;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)NGCrypto;$(SolutionDir)NGCrypto/include;$(SolutionDir)Dependencies\NGMP\include;$(IncludePath)</IncludePath>
     <OutDir>$(SolutionDir)bin\$(ProjectName)\$(PlatformTarget)-$(Configuration)\</OutDir>
     <IntDir>$(SolutionDir)bin-int\$(ProjectName)\$(PlatformTarget)-$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <IncludePath>$(SolutionDir)NGCrypto;$(SolutionDir)NGCrypto/include;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)NGCrypto;$(SolutionDir)NGCrypto/include;$(SolutionDir)Dependencies\NGMP\include;$(IncludePath)</IncludePath>
     <OutDir>$(SolutionDir)bin\$(ProjectName)\$(PlatformTarget)-$(Configuration)\</OutDir>
     <IntDir>$(SolutionDir)bin-int\$(ProjectName)\$(PlatformTarget)-$(Configuration)\</IntDir>
   </PropertyGroup>

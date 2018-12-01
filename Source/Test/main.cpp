@@ -39,11 +39,11 @@ void DiffieHellmanTest()
 {
     using namespace KeyExchange;
     std::cout << "\n\n===== Diffie Hellman Key Exchange =====\n\n";
-    BigUInt<PRIVATE_KEY_SIZE>   private1;
-    BigUInt<PUBLIC_KEY_SIZE>    public1;
+    NGMP<PRIVATE_KEY_SIZE>   private1;
+    NGMP<PUBLIC_KEY_SIZE>    public1;
 
-    BigUInt<PRIVATE_KEY_SIZE>   private2;
-    BigUInt<PUBLIC_KEY_SIZE>    public2;
+    NGMP<PRIVATE_KEY_SIZE>   private2;
+    NGMP<PUBLIC_KEY_SIZE>    public2;
 
     DiffieHellman::GenerateKeyPair(private1, public1);
     std::cout << "Client1 Private Key: \n" << private1 << "\n\n";
@@ -529,11 +529,11 @@ void CombinedUsageExample()
 {
     using namespace KeyExchange;
     std::cout << "\n\n===== Diffie Hellman Key Exchange =====\n\n";
-    BigUInt<PRIVATE_KEY_SIZE>   private1;
-    BigUInt<PUBLIC_KEY_SIZE>    public1;
-
-    BigUInt<PRIVATE_KEY_SIZE>   private2;
-    BigUInt<PUBLIC_KEY_SIZE>    public2;
+    NGMP<PRIVATE_KEY_SIZE>   private1;
+    NGMP<PUBLIC_KEY_SIZE>    public1;
+    
+    NGMP<PRIVATE_KEY_SIZE>   private2;
+    NGMP<PUBLIC_KEY_SIZE>    public2;
 
     DiffieHellman::GenerateKeyPair(private1, public1);
     std::cout << "Client1 Private Key: \n" << private1 << "\n\n";

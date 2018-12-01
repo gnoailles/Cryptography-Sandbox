@@ -71,22 +71,22 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>$(ProjectDir);$(ProjectDir)include;$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectDir);$(ProjectDir)include;$(SolutionDir)Dependencies\NGMP\include;$(IncludePath)</IncludePath>
     <OutDir>$(SolutionDir)bin\$(ProjectName)\$(PlatformTarget)-$(Configuration)\</OutDir>
     <IntDir>$(SolutionDir)bin-int\$(ProjectName)\$(PlatformTarget)-$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <IncludePath>$(ProjectDir);$(ProjectDir)include;$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectDir);$(ProjectDir)include;$(SolutionDir)Dependencies\NGMP\include;$(IncludePath)</IncludePath>
     <OutDir>$(SolutionDir)bin\$(ProjectName)\$(PlatformTarget)-$(Configuration)\</OutDir>
     <IntDir>$(SolutionDir)bin-int\$(ProjectName)\$(PlatformTarget)-$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>$(ProjectDir);$(ProjectDir)include;$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectDir);$(ProjectDir)include;$(SolutionDir)Dependencies\NGMP\include;$(IncludePath)</IncludePath>
     <OutDir>$(SolutionDir)bin\$(ProjectName)\$(PlatformTarget)-$(Configuration)\</OutDir>
     <IntDir>$(SolutionDir)bin-int\$(ProjectName)\$(PlatformTarget)-$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <IncludePath>$(ProjectDir);$(ProjectDir)include;$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectDir);$(ProjectDir)include;$(SolutionDir)Dependencies\NGMP\include;$(IncludePath)</IncludePath>
     <OutDir>$(SolutionDir)bin\$(ProjectName)\$(PlatformTarget)-$(Configuration)\</OutDir>
     <IntDir>$(SolutionDir)bin-int\$(ProjectName)\$(PlatformTarget)-$(Configuration)\</IntDir>
   </PropertyGroup>
@@ -108,8 +108,7 @@ xcopy /y $(OutDir)*.lib $(SolutionDir)..\Build\lib\$(Platform)\$(Configuration)\
 rd /S /Q $(SolutionDir)..\Build\include
 
 :: Copy Includes ::
-xcopy /y/s $(ProjectDir)include\*.h $(SolutionDir)..\Build\include\
-xcopy /y/s $(ProjectDir)include\*.hxx $(SolutionDir)..\Build\include\</Command>
+xcopy /y/s $(ProjectDir)include\*.h $(SolutionDir)..\Build\include\</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -130,8 +129,7 @@ xcopy /y $(OutDir)*.lib $(SolutionDir)..\Build\lib\$(Platform)\$(Configuration)\
 rd /S /Q $(SolutionDir)..\Build\include
 
 :: Copy Includes ::
-xcopy /y/s $(ProjectDir)include\*.h $(SolutionDir)..\Build\include\
-xcopy /y/s $(ProjectDir)include\*.hxx $(SolutionDir)..\Build\include\</Command>
+xcopy /y/s $(ProjectDir)include\*.h $(SolutionDir)..\Build\include\</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -158,8 +156,7 @@ xcopy /y $(OutDir)*.lib $(SolutionDir)..\Build\lib\$(Platform)\$(Configuration)\
 rd /S /Q $(SolutionDir)..\Build\include
 
 :: Copy Includes ::
-xcopy /y/s $(ProjectDir)include\*.h $(SolutionDir)..\Build\include\
-xcopy /y/s $(ProjectDir)include\*.hxx $(SolutionDir)..\Build\include\</Command>
+xcopy /y/s $(ProjectDir)include\*.h $(SolutionDir)..\Build\include\</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -186,8 +183,7 @@ xcopy /y $(OutDir)*.lib $(SolutionDir)..\Build\lib\$(Platform)\$(Configuration)\
 rd /S /Q $(SolutionDir)..\Build\include
 
 :: Copy Includes ::
-xcopy /y/s $(ProjectDir)include\*.h $(SolutionDir)..\Build\include\
-xcopy /y/s $(ProjectDir)include\*.hxx $(SolutionDir)..\Build\include\</Command>
+xcopy /y/s $(ProjectDir)include\*.h $(SolutionDir)..\Build\include\</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>

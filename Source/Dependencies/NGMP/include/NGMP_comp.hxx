@@ -1,9 +1,9 @@
 #pragma once
 
 template <unsigned BitCount>
-bool BigUInt<BitCount>::IsZero() const
+bool NGMP<BitCount>::IsZero() const
 {
-    for (int i = 0; i < ULL_COUNT; ++i)
+    for (int i = 0; i < MAX_LIMB_COUNT; ++i)
     {
         if (number[i] != 0)
             return false;
@@ -12,15 +12,15 @@ bool BigUInt<BitCount>::IsZero() const
 }
 
 template <unsigned BitCount>
-bool BigUInt<BitCount>::IsOdd() const
+bool NGMP<BitCount>::IsOdd() const
 {
     return (number[0] & 1);
 }
 
 template <unsigned BitCount>
-bool BigUInt<BitCount>::operator==(uint64_t value) const
+bool NGMP<BitCount>::operator==(uint64_t value) const
 {
-    for (int i = ULL_COUNT - 1; i > 0; --i)
+    for (int i = MAX_LIMB_COUNT - 1; i > 0; --i)
     {
         if (number[i] != 0)
             return false;
@@ -29,11 +29,11 @@ bool BigUInt<BitCount>::operator==(uint64_t value) const
 }
 
 template <unsigned BitCount>
-bool BigUInt<BitCount>::operator==(const BigUInt& other) const
+bool NGMP<BitCount>::operator==(const NGMP& other) const
 {
-    if (other.ULL_COUNT != ULL_COUNT)
+    if (other.MAX_LIMB_COUNT != MAX_LIMB_COUNT)
         return false;
-    for (int i = 0; i < ULL_COUNT; ++i)
+    for (int i = 0; i < MAX_LIMB_COUNT; ++i)
     {
         if (number[i] != other.number[i])
             return false;
@@ -42,9 +42,9 @@ bool BigUInt<BitCount>::operator==(const BigUInt& other) const
 }
 
 template <unsigned BitCount>
-int BigUInt<BitCount>::Compare(const BigUInt<BitCount>& other) const
+int NGMP<BitCount>::Compare(const NGMP<BitCount>& other) const
 {
-    for (int i = ULL_COUNT - 1; i >= 0; --i)
+    for (int i = MAX_LIMB_COUNT - 1; i >= 0; --i)
     {
         if (number[i] > other.number[i])
             return 1;
