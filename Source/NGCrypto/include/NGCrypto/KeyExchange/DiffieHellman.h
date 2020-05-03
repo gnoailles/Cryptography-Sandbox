@@ -11,6 +11,10 @@ namespace Cryptography
 {
     namespace KeyExchange
     {
+        using PublicKey     = NGMP<PUBLIC_KEY_SIZE>;
+        using PrivateKey    = NGMP<PRIVATE_KEY_SIZE>;
+        using SharedKey     = NGMP<PUBLIC_KEY_SIZE>;
+
         class NG_CRYPTO_API DiffieHellman
         {
         private:
@@ -38,9 +42,10 @@ namespace Cryptography
             DiffieHellman() = delete;
             ~DiffieHellman() = delete;
 
-            static void                  GenerateKeyPair(        NGMP<PRIVATE_KEY_SIZE>& p_privateKey,        NGMP<PUBLIC_KEY_SIZE>&  p_publicKey);
-            static NGMP<PUBLIC_KEY_SIZE> GenerateSharedKey(const NGMP<PUBLIC_KEY_SIZE>&  p_otherPublic, const NGMP<PRIVATE_KEY_SIZE>& p_privateKey);
+            static void         GenerateKeyPair(PrivateKey& p_privateKey, PublicKey&  p_publicKey);
+            static SharedKey    GenerateSharedKey(const PublicKey&  p_otherPublic, const PrivateKey& p_privateKey);
         };
+        
     }
 }
 

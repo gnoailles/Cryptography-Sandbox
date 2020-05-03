@@ -48,7 +48,7 @@ namespace Cryptography
         const NGMP<1024> DiffieHellman::PRIME(PRIME_ARRAY, 32);
     #endif
 
-        void DiffieHellman::GenerateKeyPair(NGMP<PRIVATE_KEY_SIZE>& p_privateKey, NGMP<PUBLIC_KEY_SIZE>& p_publicKey)
+        void DiffieHellman::GenerateKeyPair(PrivateKey& p_privateKey, PublicKey& p_publicKey)
         {
             p_privateKey = NGMP<PRIVATE_KEY_SIZE>::Random();
 
@@ -56,7 +56,7 @@ namespace Cryptography
             p_publicKey = NGMP<OVERFLOW_SAFE_SIZE>::PowMod(GENERATOR, p_privateKey, PRIME);
         }
 
-        NGMP<PUBLIC_KEY_SIZE> DiffieHellman::GenerateSharedKey(const NGMP<PUBLIC_KEY_SIZE>& p_otherPublic, const NGMP<PRIVATE_KEY_SIZE>& p_privateKey)
+        SharedKey DiffieHellman::GenerateSharedKey(const PublicKey& p_otherPublic, const PrivateKey& p_privateKey)
         {
             // Shared Key = PublicKey ^ PrivateKey mod PRIME
             return NGMP<OVERFLOW_SAFE_SIZE>::PowMod(p_otherPublic, p_privateKey, PRIME);
